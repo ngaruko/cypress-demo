@@ -1,0 +1,34 @@
+name: Cypress demo EMV
+on: push
+
+env:
+  EMV_USERNAME: ${{ secrets.EMV_USERNAME }}
+  EMV_PASSWORD: ${{ secrets.EMV_PASSWORD }}
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+        cache: 'npm'
+    - run: npm ci
+    - run: npx cypress run
+    - name: Archive Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts
+        path: |
+          cypress/videos
+          cypress/screenshots
+#       if: ${{ failure() }}
+
