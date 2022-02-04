@@ -28,7 +28,7 @@ jobs:
       with:
         name: Artifacts
         path: |
-          cypress/videos
-          cypress/screenshots
+          cypress-demo/cypress/videos
+          cypress-demo/cypress/screenshots
 #       if: ${{ failure() }}
 
