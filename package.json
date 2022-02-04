@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open"
+    "test": "npx cypress open  -e username=$EMV_USERNAME,password=$EMV_PASSWORD"
   },
   "keywords": [],
   "author": "",

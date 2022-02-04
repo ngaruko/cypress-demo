@@ -1,10 +1,13 @@
 const Page = require('./page');
+
+const username = Cypress.env('username');
+const password = Cypress.env('password');
 class LoginPage extends Page {
 
-    login(username = process.env.EMV_USERNAME, password = process.env.EMV_PASSWORD) {
+    login(user = username, pass = password) {
 
-        cy.get("#email").type(username);
-        cy.get("#password").type(password);
+        cy.get("#email").type(user);
+        cy.get("#password").type(pass);
         cy.get(".login-button").click();
         cy.get('.main-content', { timeout: 30000 }).should('be.visible');
         return this;
