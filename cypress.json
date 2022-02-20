@@ -1,4 +1,4 @@
 {
-  "chromeWebSecurity": false,
-  "baseUrl": "https://next-testing.emvisage.net"
+  "baseUrl":"https://www.trademe.co.nz",
+  "blockHosts": ["https://api/trademe.co.nz/v1/advertising/**"]
 }

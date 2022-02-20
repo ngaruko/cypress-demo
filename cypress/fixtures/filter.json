@@ -1,6 +1,16 @@
 {
-	"customer": "",
-	"suburb": "",
-	"state": " ",
-	"status": ""
+	"category": {
+		"industry": " Engineering ",
+		"job": " Electrical "
+	},
+
+	"location": {
+		"region": "Auckland",
+		"district": "Auckland City"
+	},
+	"type": " Full time ",
+	"pay": {
+		"min": "$100k",
+		"max": "$175k"
+	}
 }

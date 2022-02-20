@@ -1,15 +1,15 @@
 {
-  "name": "EmvCypressFramework",
+  "name": "TradeMeCypressFramework",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open  -e username=$EMV_USERNAME,password=$EMV_PASSWORD"
+    "test": "npx cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^9.3.1"
+    "cypress": "^8.3.1"
   }
 }

@@ -13,8 +13,6 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-const { login } = require('../page-objects/login_page');
-
 // Import commands.js using ES2015 syntax:
 //import './commands'
 
@@ -24,11 +22,9 @@ const { login } = require('../page-objects/login_page');
 
  //Global hooks
  before(() => {
-  cy.visit("/login");
-
-  login();
+  cy.visit("https://www.trademe.co.nz/a/jobs/search");
 });
 
-// after(() => {
-//   cy.log('Done with testing...');
-// });
+after(() => {
+  cy.log('Done with testing...');
+});
