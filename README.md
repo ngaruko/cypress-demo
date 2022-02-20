@@ -1,6 +1,6 @@
 # UI Automation Challenge
 
-UI Automation tests against TradeMe's job homepage (https://www.trademe.co.nz/a/jobs), using the cypress framework provided.
+UI Automation tests against TradeMe's job homepage (https://www.trademe.co.nz/a/jobs), using the cypress framework.
 
 ## Using the cypress Framework
 

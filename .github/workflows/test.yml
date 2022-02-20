@@ -22,7 +22,7 @@ jobs:
         node-version: 14.x
         cache: 'npm'
     - run: npm ci
-    - run: npx cypress run  -e username=$EMV_USERNAME,password=$EMV_PASSWORD
+    - run: npx cypress run  -e #username=$EMV_USERNAME,password=$EMV_PASSWORD
     - name: Archive Results
       uses: actions/upload-artifact@v2
       with:
