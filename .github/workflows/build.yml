@@ -1,27 +1,36 @@
-name: Cypress Tests
+name: Issue Response Workflow
 
-on: [pull_request]
+on:
+  issues:
+    types: [opened]
 
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: '23' # or another version depending on your compatibility
 
     - name: Install dependencies
       run: npm install
 
-    - name: Get pull request title and body
-      id: pr_data
+    - name: Print Issue Information
       run: |
-        echo "PR_TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
-        echo "PR_BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
+        echo "Issue Title: ${{ github.event.issue.title }}"
+        echo "Issue Body: ${{ github.event.issue.body }}"
+        echo "PR_TITLE=${{ github.event.issue.title }}" >> $GITHUB_ENV
+        echo "PR_BODY=${{ github.event.issue.body}}" >> $GITHUB_ENV
+
+    # - name: Get pull request title and body
+    #   id: pr_data
+    #   run: |
+        # echo "PR_TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+        # echo "PR_BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
 
     - name: Use PR Title and Body
       run: |
@@ -29,12 +38,12 @@ jobs:
         echo "Pull Request Body: $PR_BODY"
 
     - name: Run Cypress tests
-      run: npx cypress run --env PR_URL="$PR_URL"
+      run: npx cypress run --env PR_URL="$PR_BODY"
     - name: Archive Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Artifacts
         path: |
-          cypress-demo/cypress/videos
-          cypress-demo/cypress/screenshots
+          cypress-demo/cypress-demo/cypress/videos
+          cypress-demo/cypress-demo/cypress/screenshots
       # if: ${{ failure() }}

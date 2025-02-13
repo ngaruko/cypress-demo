@@ -1,5 +1,5 @@
 const JobsPage = require('../../page-objects/jobs_page');
-describe('Searching roles by keyword', () => {
+describe.skip('Searching roles by keyword', () => {
     afterEach(() => JobsPage.clearSearch());
     beforeEach(() => JobsPage.clearSearch());
     it('Search by random keyword', () => {

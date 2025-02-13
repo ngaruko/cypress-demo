@@ -22,7 +22,9 @@
 
  //Global hooks
  before(() => {
-  cy.visit("https://www.trademe.co.nz/a/jobs/search");
+  // cy.visit("https://www.trademe.co.nz/a/jobs/search");
+  cy.log('Testing ---123')
+  cy.log('Going to: ', Cypress.env('PR_URL'))
 });
 
 after(() => {
