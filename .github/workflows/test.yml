@@ -1,5 +1,7 @@
 name: Cypress demo EMV
-on: push
+on:
+  release:
+    types: [published]
 
 env:
   EMV_USERNAME: ${{ secrets.EMV_USERNAME }}
