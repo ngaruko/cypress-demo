@@ -1,34 +1,40 @@
 name: Cypress Tests
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
-  cypress-run:
+  cypress-tests:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Code
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup Node
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '23' # Specify the Node version
+        node-version: '23' # or another version depending on your compatibility
 
-    - name: Install Dependencies
+    - name: Install dependencies
       run: npm install
 
-    - name: Cache Cypress binary
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/Cypress
-        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-cypress-
+    - name: Get pull request title and body
+      id: pr_data
+      run: |
+        echo "PR_TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+        echo "PR_BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
 
-    - name: Run Cypress Tests
-      uses: cypress-io/github-action@v2
+    - name: Use PR Title and Body
+      run: |
+        echo "Pull Request Title: $PR_TITLE"
+        echo "Pull Request Body: $PR_BODY"
+
+    - name: Run Cypress tests
+      run: npx cypress run --env PR_URL="$PR_URL"
+    - name: Archive Results
+      uses: actions/upload-artifact@v2
       with:
-        start: npm start # Command to start your server
-        wait-on: 'http://localhost:3000' # Adjust if your app runs on a different port
-        wait-on-timeout: 300 # seconds to wait for your server to start
+        name: Artifacts
+        path: |
+          cypress-demo/cypress/videos
+          cypress-demo/cypress/screenshots
+      # if: ${{ failure() }}
