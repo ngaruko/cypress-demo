@@ -41,9 +41,10 @@ jobs:
       run: npx cypress run --env PR_URL="$PR_BODY"
     - name: Archive Results
       uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: Artifacts
         path: |
           cypress-demo/cypress-demo/cypress/videos
           cypress-demo/cypress-demo/cypress/screenshots
-      # if: ${{ failure() }}
+      

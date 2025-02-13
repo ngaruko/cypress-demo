@@ -10,7 +10,8 @@ describe('Navigate to PR URL', () => {
         cy.visit(prUrl);
   
         // You can add more tests here to interact with the page
-        cy.title().should('include', 'Expected Page Title');
+        cy.title().should('include', 'Pre-Booking Offer');
+        cy.contains('h2.text-center', 'Already Accepted').should('be.visible');
       } else {
         cy.log('No URL provided');
       }
