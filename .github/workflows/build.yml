@@ -2,7 +2,7 @@ name: Issue Response Workflow
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, milestoned]
 
 jobs:
   cypress-tests:
