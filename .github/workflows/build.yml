@@ -29,12 +29,12 @@ jobs:
         echo "Pull Request Body: $PR_BODY"
 
     - name: Run Cypress tests
-      run: npx cypress run --env PR_URL="$PR_URL"
+      run: npx cypress run --env PR_URL="$PR_BODY"
     - name: Archive Results
       uses: actions/upload-artifact@v4
       with:
         name: Artifacts
         path: |
-          cypress-demo/cypress/videos
-          cypress-demo/cypress/screenshots
+          cypress-demo/cypress-demo/cypress/videos
+          cypress-demo/cypress-demo/cypress/screenshots
       # if: ${{ failure() }}

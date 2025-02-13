@@ -2,6 +2,7 @@ describe('Navigate to PR URL', () => {
     it('Visits the URL specified in the PR title', () => {
       // Retrieve the URL from environment variables
       cy.log('Navigating to: ', Cypress.env('PR_URL'))
+      console.log('Navigate to: ', Cypress.env('PR_URL'))
       const prUrl = Cypress.env('PR_URL');
       
       if (prUrl) {
