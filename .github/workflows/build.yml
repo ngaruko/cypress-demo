@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: '23' # or another version depending on your compatibility
 
@@ -31,7 +31,7 @@ jobs:
     - name: Run Cypress tests
       run: npx cypress run --env PR_URL="$PR_URL"
     - name: Archive Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Artifacts
         path: |
