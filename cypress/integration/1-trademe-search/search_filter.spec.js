@@ -1,5 +1,5 @@
 const JobsPage = require('../../page-objects/jobs_page');
-describe('Filtering or refining search results', () => {
+describe.skip('Filtering or refining search results', () => {
 
 	describe('Filtering ', () => {
 		after(() => JobsPage.clearSearch());

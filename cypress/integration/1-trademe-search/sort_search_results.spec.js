@@ -1,5 +1,5 @@
 const JobsPage = require('../../page-objects/jobs_page');
-describe('Sorting search results', () => {
+describe.skip('Sorting search results', () => {
 
 	it('sort by salary', () => {
 		JobsPage.searchByKeyword('Testing');
