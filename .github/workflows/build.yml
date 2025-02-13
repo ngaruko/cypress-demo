@@ -1,6 +1,8 @@
-name: Cypress Tests
+name: Issue Response Workflow
 
-on: [pull_request]
+on:
+  issues:
+    types: [opened]
 
 jobs:
   cypress-tests:
@@ -17,11 +19,18 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Get pull request title and body
-      id: pr_data
+    - name: Print Issue Information
       run: |
-        echo "PR_TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
-        echo "PR_BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
+        echo "Issue Title: ${{ github.event.issue.title }}"
+        echo "Issue Body: ${{ github.event.issue.body }}"
+        echo "PR_TITLE=${{ github.event.issue.title }}" >> $GITHUB_ENV
+        echo "PR_BODY=${{ github.event.issue.body}}" >> $GITHUB_ENV
+
+    # - name: Get pull request title and body
+    #   id: pr_data
+    #   run: |
+        # echo "PR_TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+        # echo "PR_BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
 
     - name: Use PR Title and Body
       run: |
