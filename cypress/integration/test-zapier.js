@@ -8,22 +8,11 @@ describe('Navigate to PR URL', () => {
       if (prUrl) {
         // Use the URL to navigate
         cy.visit(prUrl);
-  
+        cy.contains('h2.text-center', 'Already Accepted').should('not.exist');
         // You can add more tests here to interact with the page
         cy.title().should('include', 'Pre-Booking Offer');
-        // cy.contains('button', 'Accept').click();
-        // cy.contains('Booking Accepted').should('be.visible');
-        // Check for the 'Booking Accepted' message
-        
-          cy.contains('button', 'Accept').click().then(() => {
-          cy.contains('Booking Accepted').should('be.visible');
-          console.log('Booking has been successfully accepted.');
-        }).catch((err) => {
-          // Handle the error if 'Booking Accepted' is not found
-          console.error('Cannot confirm booking acceptance:', err.message);
-          cy.contains('h2.text-center', 'Already Accepted').should('be.visible');
-
-        });
+        cy.contains('button', 'Accept').click();
+        cy.contains('Booking Accepted').should('be.visible');
         // cy.contains('h2.text-center', 'Already Accepted').should('be.visible');
         
       } else {
