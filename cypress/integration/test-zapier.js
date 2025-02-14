@@ -10,12 +10,12 @@ describe('Navigate to PR URL', () => {
         cy.visit(prUrl);
   
         // You can add more tests here to interact with the page
-        //cy.title().should('include', 'Pre-Booking Offer');
+        cy.title().should('include', 'Pre-Booking Offer');
         // cy.contains('button', 'Accept').click();
         // cy.contains('Booking Accepted').should('be.visible');
         // Check for the 'Booking Accepted' message
-        cy.title().should('include', 'Pre-Booking Offer').then(() => {
-          cy.contains('button', 'Accept').click();
+        
+          cy.contains('button', 'Accept').click().then(() => {
           cy.contains('Booking Accepted').should('be.visible');
           console.log('Booking has been successfully accepted.');
         }).catch((err) => {
